@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+  <link href="{{ asset('css/auth.css') }}" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="main-block">
+      <h1>Login</h1>
+      <form method="post">
+        <label id="icon" for="name"><i class="fas fa-user"></i></label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" autocomplete="username" placeholder='username' required autofocus/>
+        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder='password' required/>
+            <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+        <div class="btn-block">
+          <button type="submit">Login</button>
+          <a href="{{ path('app_register')}}">Register</a>
+        </div>
+      </form>
+    </div>
+  </body>
+{% endblock %}

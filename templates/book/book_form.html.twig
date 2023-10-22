@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  <link href="{{ asset('css/form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Formulaire de livre{% endblock %}
+
+{% block body %}
+<div class="testbox">
+      <form action="{{ path(
+                       app.request.attributes.get('_route'),
+                       app.request.attributes.get('_route_params') 
+                    )}}" method='post'>
+        <div class="banner">
+          <h1>Formulaite de saisie d'un livre</h1>
+        </div>
+        {% if message is defined %}
+         <div class="alert alert-{{message_type}}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+        </div> 
+        {% endif %}
+        <div class="item">
+          <p>Title</p>
+          <input type="text" name="title" placeholder="Titre du livre" 
+            value= "{% if book is defined %} {{ book.title}} {% endif %}"
+            required/>
+        </div>
+        <div class="item">
+          <p>Auteur</p>
+          <input type="text" name="author" placeholder="Auteur du livre"
+            value= "{% if book is defined %} {{ book.author}} {% endif %}"
+           required/>
+        </div>
+        <div class="item">
+          <p>Date de publication</p>
+          <input type="date" name="pdate"
+            value={% if book is defined %} {{ book.publishedAt|date("Y-m-d")}} {% endif %}
+           required/>
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="btn-block">
+          <button type="submit" href="/">Créer</button>
+        </div>
+      </form>
+    </div>
+{% endblock %}
