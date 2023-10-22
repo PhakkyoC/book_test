@@ -8,7 +8,7 @@ composer install
 
 bin/console doctrine:database:create
 
-bin/console d:m:m
+bin/console doctrine:migrations:migrate
 
 bin/console doctrine:fixtures:load -n
 
