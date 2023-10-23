@@ -2,7 +2,7 @@ Pour ce projet j'ai choisi d'utiliser une base SQLite3 qui ne demande pas d'inst
 
 version de php utiliser : php8.1.2
 
-Instalation : 
+installation : 
 
 composer install 
 
